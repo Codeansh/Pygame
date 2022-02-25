@@ -1,2 +1,0 @@
-# Pygame
-A simple game
