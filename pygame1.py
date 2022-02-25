@@ -77,7 +77,7 @@ def enemy(x,y,i):
 bulletX = 0
 bulletY = 0
 bulletX_change=0
-bulletY_change=20
+bulletY_change=10
 bullet_state='ready'
 
 def fire_bullet(x,y):
@@ -150,9 +150,11 @@ while running :
                   fire_bullet(bulletX,bulletY+playerY)
               
         if event.type ==pygame.KEYUP:
-            if event.key == pygame.K_LEFT or event.key == pygame.K_RIGHT:
+            if (event.key ==pygame.K_LEFT and playerX_change<0) or (event.key == pygame.K_RIGHT and playerX_change>0):
                  playerX_change=0
-                 playerY_change=0
+    
+            if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                 playerY_change=0   
                 
                
                 # f=open('output.txt','a')
@@ -178,6 +180,8 @@ while running :
              
            playerX = 510
            playerY = 800
+           playerX_change = 0
+           playerY_change = 0
            bulletX=playerX
            bulletY=0
            bullet_state ='ready'
